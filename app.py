@@ -1,21 +1,19 @@
+from commands.help import Help
+from commands.asistent import Asistent
+from commands.misic import Music
+from commands.wiki import Wiki
+from commands.code import Code
+from commands.runPy import RunPy
+from commands.TicTacToe import TicTacToe
+from time import sleep
+from discord.ext import commands
+import discord
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 
-import discord
-from discord.ext import commands
-from time import sleep
-from commands.TicTacToe import TicTacToe
-from commands.runPy import RunPy
-from commands.code import Code
-from commands.wiki import Wiki
-from commands.misic import Music
-from commands.asistent import Asistent
-from commands.help import Help
-
-
-bot = commands.Bot(command_prefix=.,
+bot = commands.Bot(command_prefix=".",
                    description="server maneger", intents=discord.Intents.all())
 clientt = discord.Client()
 
