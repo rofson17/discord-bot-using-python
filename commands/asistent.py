@@ -55,7 +55,7 @@ class Asistent(commands.Cog):
         await ctx.message.delete()
         async with ctx.typing():
             myclient = DankMemeClient()
-            reditMeme = await myclient.async_meme(subreddit="memes")
+            reditMeme = await myclient.async_meme(subreddit="dankmemes")
             embed = Embed(
                 title=reditMeme["title"], description=f"[see post]({reditMeme['post_url']})")
             embed.set_image(url=reditMeme['img_url'])

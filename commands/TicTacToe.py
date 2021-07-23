@@ -118,7 +118,8 @@ class TicTacToe(commands.Cog):
 
     @commands.command(name="exit")
     async def exit(self, ctx):
-        if ctx.message.author == self.player1 or ctx.message.author == self.player2:
+        # if ctx.message.author == self.player1 or ctx.message.author == self.player2 or :
+        if ctx.message.author == ctx.guild.owner:
             self.player1 = ""
             self.player2 = ""
             self.turn = ""
