@@ -27,7 +27,7 @@ class TicTacToe(commands.Cog):
             [2, 4, 6]
         ]
 
-    @commands.command(name="ttt")
+    @commands.command(name="ttt", aliases=['tictactoe'])
     async def tictactoe(self, ctx, member: Member):
         if not self.gameOver:
             return
@@ -66,7 +66,7 @@ class TicTacToe(commands.Cog):
                             description="A GAME IS STILL IN PROGRESS. FINISH IT BEFORE STARTING A NEW ONE", color=0xe74c3c)
             await ctx.send(embed=myEmbed)
 
-    @commands.command(name="place")
+    @commands.command(name="place", aliases=['turn'])
     async def place(self, ctx, pos: int):
         if not self.gameOver:
             mark = ""
@@ -115,6 +115,18 @@ class TicTacToe(commands.Cog):
             myEmbed = Embed(
                 title="START GAME", description="TO START A NEW GAME, USE -tictactoe COMMAND", color=0x2ecc71)
             await ctx.send(embed=myEmbed)
+
+    @commands.command(name="exit")
+    async def exit(self, ctx):
+        if ctx.message.author == self.player1 or ctx.message.author == self.player2:
+            self.player1 = ""
+            self.player2 = ""
+            self.turn = ""
+            self.gameOver = True
+            self.board = [],
+            self.count = 0
+            return await ctx.send("This game is over")
+        return await ctx.reply("You are not in the game")
 
     def checkWinner(self, winningConditions, mark):
         for condition in winningConditions:

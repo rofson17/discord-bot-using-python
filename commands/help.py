@@ -32,7 +32,7 @@ class Help (commands.Cog):
             name="Admin info", value="See info of admin\n> `Command: {}admin`".format(prefix), inline=True)
 
         embed.add_field(
-            name="Tic Tac Toe", value="Play tic tac toe\n> `Command: {}ttt <mention>`\n> `{}place <position>`".format(prefix, prefix), inline=True)
+            name="Tic Tac Toe", value="Play tic tac toe\n> `Command: {}ttt <mention>`\n> `{}place <position>`\n> `{}exit`".format(prefix, prefix, prefix), inline=True)
 
         embed.add_field(
             name="Memes", value="See meme posts\n> `Command: {}meme`".format(prefix), inline=True)
@@ -96,11 +96,13 @@ class Help (commands.Cog):
     @help.command(name="tictactoe", aliases=["ttt", "place"])
     async def tictactoe(self, ctx):
         embed = Embed(title="Help command",
-                      description="Play tic tac toe game\nttt for start game and place for give your turn", color=Color.random())
+                      description="Play tic tac toe game\nttt for start game , place for give your turn, exit for stop game", color=Color.random())
         embed.add_field(
             name="Syntex", value="`{}ttt <mention>`".format(prefix))
         embed.add_field(
             name="Syntex", value="`{}place <position>`".format(prefix))
+        embed.add_field(
+            name="Syntex", value="`{}exit`".format(prefix))
         return await ctx.send(embed=embed)
 
     # meme command
