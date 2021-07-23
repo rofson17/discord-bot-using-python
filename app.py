@@ -1,6 +1,5 @@
 from commands.help import Help
 from commands.asistent import Asistent
-from commands.misic import Music
 from commands.wiki import Wiki
 from commands.code import Code
 from commands.runPy import RunPy
@@ -38,7 +37,6 @@ async def on_command_error(ctx, error):
 # add commands
 bot.add_cog(Help(bot))
 bot.add_cog(Asistent(bot))
-bot.add_cog(Music(bot))
 bot.add_cog(Wiki(bot))
 bot.add_cog(Code(bot))
 bot.add_cog(RunPy(bot))

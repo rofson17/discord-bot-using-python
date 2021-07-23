@@ -44,9 +44,6 @@ class Help (commands.Cog):
             name="Admin info", value="See info of admin\n> `Command: {}admin`".format(prefix), inline=True)
 
         embed.add_field(
-            name="Play music", value="Use this command to see how to play music in voice channel\n> `Command: {}help music`".format(prefix), inline=True)
-
-        embed.add_field(
             name="Syntex higthlight", value="Highlight code syntex (c, cpp, cs, java, python, javascript, php, sql, html, css, bash) \n**Use shift+Enter for new line**\n> `Command: {}<language name> <code>`".format(prefix), inline=False)
 
         return await ctx.send(embed=embed)
@@ -122,33 +119,4 @@ class Help (commands.Cog):
                       description="Run python code", color=Color.random())
         embed.add_field(
             name="Syntex", value="`{}run <python code>`".format(prefix))
-        return await ctx.send(embed=embed)
-
-    # Song command
-
-    @help.command(name="music", aliases=['song'])
-    async def run(self, ctx):
-        embed = Embed(title="Help command",
-                      description="Play Song", color=Color.random())
-        embed.add_field(
-            name="Join bot to the voice channel", value="`{}joinor {}connect`".format(prefix, prefix), inline=True)
-        embed.add_field(
-            name="Play song", value="`{}paly <song name> or {}p <song name>`".format(prefix, prefix), inline=True)
-        embed.add_field(
-            name="Pause song", value="`{}pause`".format(prefix), inline=True)
-        embed.add_field(
-            name="Resume song", value="`{}resume`".format(prefix), inline=True)
-        embed.add_field(
-            name="Skip song", value="`{}skip`".format(prefix), inline=True)
-        embed.add_field(
-            name="Remove song from queue", value="`{}remove <song number>`".format(prefix), inline=True)
-        embed.add_field(
-            name="Clear Playlist", value="`{}clear or {}clr`".format(prefix, prefix), inline=True)
-        embed.add_field(
-            name="Show Playlist", value="`{}queue or {}q or {}playlist`".format(prefix, prefix, prefix), inline=True)
-        embed.add_field(
-            name="Volume", value="`{}vol <number> or {}volume <number>`".format(prefix, prefix), inline=True)
-        embed.add_field(
-            name="leave", value="`{}stop or {}leave`".format(prefix, prefix), inline=True)
-
         return await ctx.send(embed=embed)
