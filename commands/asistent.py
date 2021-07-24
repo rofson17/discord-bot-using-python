@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import Member, Embed, Color
+from discord import Member, Embed, Color, colour, embeds
 from datetime import datetime
 from memelib.api import DankMemeClient
 
@@ -67,5 +67,9 @@ class Asistent(commands.Cog):
     # math canculate command
     @commands.command(name="math")
     async def math(self, ctx, *, problem):
-        ans = eval(problem)
-        return await ctx.reply(f"Answer is: {ans}")
+        try:
+            ans = eval(problem)
+        except:
+            return await ctx.reply("Syntex error")
+        embed = Embed(title=f"Answer: {ans}", color=Color.blurple())
+        return await ctx.reply(embed=embed)
