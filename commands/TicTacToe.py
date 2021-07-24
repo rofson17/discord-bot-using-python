@@ -34,8 +34,9 @@ class TicTacToe(commands.Cog):
             [2, 4, 6]
         ]
 
-    @commands.command(name="ttt", aliases=['tictactoe'])
+    @commands.command(name="tictactoe", aliases=['ttt'])
     async def tictactoe(self, ctx, member: Member):
+
         if not self.gameOver:
             return
         self.board = [":white_large_square:", ":white_large_square:", ":white_large_square:",
@@ -75,6 +76,7 @@ class TicTacToe(commands.Cog):
 
     @commands.command(name="place", aliases=['turn'])
     async def place(self, ctx, pos: int):
+
         if not self.gameOver:
             mark = ""
             if self.turn == ctx.author:
@@ -144,8 +146,7 @@ class TicTacToe(commands.Cog):
                 self.gameOver = True
 
     @tictactoe.error
-    async def tictactoe_error(ctx, error):
-        print(error)
+    async def tictactoe_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             myEmbed = Embed(title="MENTION ERROR!",
                             description="PLEASE MENTION 2 USERS", color=0xe74c3c)
@@ -156,7 +157,7 @@ class TicTacToe(commands.Cog):
             await ctx.send(embed=myEmbed)
 
     @place.error
-    async def place_error(ctx, error):
+    async def place_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             myEmbed = Embed(
                 title="NO POSITION", description="PLEASE ENTER A POSITION TO MARK", color=0xe74c3c)
