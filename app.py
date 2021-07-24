@@ -1,3 +1,5 @@
+from discord import embeds
+from discord.embeds import Embed
 from commands.help import Help
 from commands.asistent import Asistent
 from commands.wiki import Wiki
@@ -18,14 +20,24 @@ clientt = discord.Client()
 
 
 # see bot is online or ofline
-@ bot.event
+@bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name="Server asistent"))
     print("logged in as {}".format(bot.user.name))
 
+# on member join
+
+
+@bot.event
+async def on_member_join(member):
+    embed = Embed(title=f"Welcome {member}",
+                  description="I am very glad to see you☺", color=discord.Color.green())
+    await member.send(embed=embed)
 
 # on  wrong command show error
-@ bot.event
+
+
+@bot.event
 async def on_command_error(ctx, error):
     embed = discord.Embed(title="Opps! Command Not Found",
                           description="Please enter right command", color=discord.Color.red())

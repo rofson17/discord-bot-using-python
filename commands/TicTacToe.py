@@ -7,6 +7,12 @@ import requests
 import urllib.request
 from time import sleep
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+prefix = os.environ["PREFIX"]
+
 
 class TicTacToe(commands.Cog):
     def __init__(self, bot):
@@ -114,7 +120,7 @@ class TicTacToe(commands.Cog):
                 await ctx.send(embed=myEmbed)
         else:
             myEmbed = Embed(
-                title="START GAME", description="TO START A NEW GAME, USE -tictactoe COMMAND", color=0x2ecc71)
+                title="START GAME", description=f"TO START A NEW GAME, USE {prefix}tictactoe COMMAND", color=0x2ecc71)
             await ctx.send(embed=myEmbed)
 
     @commands.command(name="exit")
