@@ -5,6 +5,7 @@ from random import randint
 import re
 import requests
 import urllib.request
+from time import sleep
 
 
 class TicTacToe(commands.Cog):
@@ -118,7 +119,7 @@ class TicTacToe(commands.Cog):
 
     @commands.command(name="exit")
     async def exit(self, ctx):
-        if ctx.message.author == self.player1 or ctx.message.author == self.player2 or  ctx.message.author == ctx.guild.owner:
+        if ctx.message.author == self.player1 or ctx.message.author == self.player2 or ctx.message.author == ctx.guild.owner:
             self.player1 = ""
             self.player2 = ""
             self.turn = ""
@@ -126,7 +127,10 @@ class TicTacToe(commands.Cog):
             self.board = [],
             self.count = 0
             return await ctx.send("This game is over")
-        return await ctx.reply("You are not in the game")
+        msg = await ctx.reply("You are not in the game")
+        await ctx.message.delete()
+        sleep(3)
+        return await msg.delete()
 
     def checkWinner(self, winningConditions, mark):
         for condition in winningConditions:

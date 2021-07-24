@@ -2,8 +2,11 @@ from time import time
 from discord.ext import commands
 from discord import Embed, Color
 from decouple import config
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-prefix = "."
+prefix = os.environ["PREFIX"]
 
 
 class Help (commands.Cog):

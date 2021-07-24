@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-bot = commands.Bot(command_prefix=".",
+bot = commands.Bot(command_prefix=os.environ["PREFIX"],
                    description="server maneger", intents=discord.Intents.all())
 clientt = discord.Client()
 
